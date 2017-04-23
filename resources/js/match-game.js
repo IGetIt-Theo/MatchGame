@@ -10,7 +10,12 @@ var MatchGame = {};
  */
 
 MatchGame.generateCardValues = function () {
-
+  var cv=[];
+  for (i=1; i<9;i++){
+    cv.push(i);
+    cv.push(i);
+  }
+  console.log(cv);
 };
 
 /*
