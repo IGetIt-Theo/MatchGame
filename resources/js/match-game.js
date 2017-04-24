@@ -15,7 +15,15 @@ MatchGame.generateCardValues = function () {
     cv.push(i);
     cv.push(i);
   }
-  console.log(cv);
+  /*console.log(cv);*/
+  var rcv=[];
+  while (cv.length > 0) {
+    var rand=Math.floor(Math.random()*cv.length);
+    rcv.push(cv[rand]);
+    cv.splice(rand, 1);
+  }
+  /*console.log(rcv);*/
+  return rcv;
 };
 
 /*
