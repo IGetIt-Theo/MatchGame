@@ -1,1 +1,4 @@
+MatchGame.main = function () {
 
+
+}

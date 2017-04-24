@@ -1,3 +1,11 @@
+$(document).ready(function(){
+  var cardValues=MatchGame.generateCardValues();
+  var $game = $('#game');
+
+  MatchGame.renderCards(cardValues, $game);
+});
+
+
 var MatchGame = {};
 
 /*
@@ -32,6 +40,27 @@ MatchGame.generateCardValues = function () {
 */
 
 MatchGame.renderCards = function(cardValues, $game) {
+  $game.empty();
+
+  $game.data("flipped", []);
+
+  var cardColors=[];
+  cardColors.push('hsl(25, 85%, 65%)');
+  cardColors.push('hsl(55, 85%, 65%)');
+  cardColors.push('hsl(90, 85%, 65%)');
+  cardColors.push('hsl(160, 85%, 65%)');
+  cardColors.push('hsl(220, 85%, 65%)');
+  cardColors.push('hsl(265, 85%, 65%)');
+  cardColors.push('hsl(310, 85%, 65%)');
+  cardColors.push('hsl(360, 85%, 65%)');
+
+  for (i=0; i < cardValues.length; i++){
+    var $thisCard = $('<div class="col-xs-3 card"></div>');
+    $thisCard.data("value", cardValues[i]);
+    $thisCard.data("flipped", false);
+    $thisCard.data("color", cardColors[cardValues[i]-1]);
+    $game.append($thisCard);
+  }
 
 };
 
@@ -41,5 +70,15 @@ MatchGame.renderCards = function(cardValues, $game) {
  */
 
 MatchGame.flipCard = function($card, $game) {
+  if ($card.data("flipped")) {
+    return;
+  }
+  else {
+    $card.css("background-color", $card.data("color"));
+    $card.innerHtml=$card.data("value");
+    $card.data("flipped")=false;
+
+  }
+
 
 };
